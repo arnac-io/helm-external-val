@@ -1,8 +1,9 @@
 name: "external-val"
-version: "0.0.4"
+version: "0.0.1"
 usage: "get values from an external source"
 description: "get values from an external source"
 useTunnel: false
+command: "$HELM_PLUGIN_DIR/bin/helm-external-val"
 downloaders:
   - command: ./bin/helm-external-val downloader dummy
     protocols:
