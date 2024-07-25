@@ -10,13 +10,13 @@ Currently it supports getting values from kubernetes [ConfigMaps](https://kubern
 ### Local
 
 ```
-helm plugin install https://github.com/kuuji/helm-external-val
+helm plugin install https://github.com/arnac-io/helm-external-val
 ```
 
 or by specifying the version (git tag)
 
 ```
-helm plugin install --version v0.0.4 https://github.com/kuuji/helm-external-val
+helm plugin install --version v0.0.4 https://github.com/arnac-io/helm-external-val
 ```
 
 
@@ -39,7 +39,7 @@ RUN apt-get update && \
 
 USER argocd
 
-RUN helm plugin install https://github.com/kuuji/helm-external-val
+RUN helm plugin install https://github.com/arnac-io/helm-external-val
 
 ENV HELM_PLUGINS="/home/argocd/.local/share/helm/plugins/"
 ```
@@ -66,7 +66,7 @@ repoServer:
     args:
     - |
       mkdir -p /custom-tools/helm-plugins
-      helm plugin install https://github.com/kuuji/helm-external-val
+      helm plugin install https://github.com/arnac-io/helm-external-val
     command:
     - sh
     - -ec
@@ -150,8 +150,8 @@ The url has to be formatted as follows
 - name (required) : the name of the resource to fetch
 - key (optional) : the key in which to look for the data in the resource (defaults to `values.yaml`)
 
-for example the url below will fetch the data under `my-values` from ConfigMap named `helm-values` in the namespace `kuuji`.
+for example the url below will fetch the data under `my-values` from ConfigMap named `helm-values` in the namespace `arnac-io`.
 
 ```
-cm://kuuji/helm-values/my-values
+cm://arnac-io/helm-values/my-values
 ```

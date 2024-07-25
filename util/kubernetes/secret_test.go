@@ -22,13 +22,13 @@ func TestGetSecret(t *testing.T) {
 		{
 			name: "Should fail and log not found",
 			args: args{
-				namespace: "kuuji",
+				namespace: "arnac-io",
 				name:      "helm-secret-values",
 			},
 			want: &v1.ConfigMap{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "helm-secret-values",
-					Namespace: "kuuji",
+					Namespace: "arnac-io",
 				},
 			},
 		},
@@ -49,7 +49,7 @@ func TestGetSecret(t *testing.T) {
 
 func TestComposeSecretValues(t *testing.T) {
 	type args struct {
-		secret *v1.Secret
+		secret  *v1.Secret
 		dataKey string
 	}
 	tests := []struct {
@@ -75,7 +75,7 @@ func TestComposeSecretValues(t *testing.T) {
 				secret: &v1.Secret{
 					Data: map[string][]byte{
 						"values.yaml": []byte("replicas: \"3\"\ndeployment:\n  server:\n    replicas: \"3\"\n"),
-						"test.yaml": []byte("replicas: \"5\"\ndeployment:\n  server:\n    replicas: \"12\"\n"),
+						"test.yaml":   []byte("replicas: \"5\"\ndeployment:\n  server:\n    replicas: \"12\"\n"),
 						"ignore.yaml": []byte("replicas: \"6\"\ndeployment:\n  server:\n    replicas: \"14\"\n"),
 					},
 				},
@@ -88,7 +88,7 @@ func TestComposeSecretValues(t *testing.T) {
 			args: args{
 				secret: &v1.Secret{
 					Data: map[string][]byte{
-						"test.yaml": []byte("replicas: \"5\"\ndeployment:\n  server:\n    replicas: \"12\"\n"),
+						"test.yaml":   []byte("replicas: \"5\"\ndeployment:\n  server:\n    replicas: \"12\"\n"),
 						"ignore.yaml": []byte("replicas: \"6\"\ndeployment:\n  server:\n    replicas: \"14\"\n"),
 					},
 				},

@@ -22,13 +22,13 @@ func TestGetConfigMap(t *testing.T) {
 		{
 			name: "Should fail and log not found",
 			args: args{
-				namespace: "kuuji",
+				namespace: "arnac-io",
 				name:      "helm-values",
 			},
 			want: &v1.ConfigMap{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "helm-values",
-					Namespace: "kuuji",
+					Namespace: "arnac-io",
 				},
 			},
 		},
@@ -49,7 +49,7 @@ func TestGetConfigMap(t *testing.T) {
 func TestComposeValues(t *testing.T) {
 	type args struct {
 		configmap *v1.ConfigMap
-		dataKey string
+		dataKey   string
 	}
 	tests := []struct {
 		name string
@@ -74,7 +74,7 @@ func TestComposeValues(t *testing.T) {
 				configmap: &v1.ConfigMap{
 					Data: map[string]string{
 						"values.yaml": "replicas: \"3\"\ndeployment:\n  server:\n    replicas: \"3\"\n",
-						"test.yaml": "replicas: \"8\"\ndeployment:\n  server:\n    replicas: \"2\"\n",
+						"test.yaml":   "replicas: \"8\"\ndeployment:\n  server:\n    replicas: \"2\"\n",
 						"ignore.yaml": "replicas: \"20\"\ndeployment:\n  server:\n    replicas: \"11\"\n",
 					},
 				},
@@ -87,7 +87,7 @@ func TestComposeValues(t *testing.T) {
 			args: args{
 				configmap: &v1.ConfigMap{
 					Data: map[string]string{
-						"test.yaml": "replicas: \"8\"\ndeployment:\n  server:\n    replicas: \"2\"\n",
+						"test.yaml":   "replicas: \"8\"\ndeployment:\n  server:\n    replicas: \"2\"\n",
 						"ignore.yaml": "replicas: \"20\"\ndeployment:\n  server:\n    replicas: \"11\"\n",
 					},
 				},

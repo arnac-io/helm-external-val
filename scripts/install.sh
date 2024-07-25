@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 PROJECT_NAME="helm-external-val"
-PROJECT_GH="kuuji/$PROJECT_NAME"
+PROJECT_GH="arnac-io/$PROJECT_NAME"
 
 # identify system os and arch
 OS=$(uname -s)
