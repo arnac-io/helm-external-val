@@ -10,13 +10,13 @@ Currently it supports getting values from kubernetes [ConfigMaps](https://kubern
 ### Local
 
 ```
-helm plugin install https://github.com/kuuji/helm-external-val
+helm plugin install https://github.com/arnac-io/helm-external-val
 ```
 
 or by specifying the version (git tag)
 
 ```
-helm plugin install --version v0.0.4 https://github.com/kuuji/helm-external-val
+helm plugin install --version v0.0.1 https://github.com/arnac-io/helm-external-val
 ```
 
 
